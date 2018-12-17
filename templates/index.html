@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Поиск запросов</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Foundation for Sites</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+	<div class="grid-container">
+		<h1>Запросы из старых КП</h1>
+		<form>
+			<div class="large-12 cell">
+				<label>Поиск запросов
+					<br>
+					<small>Можно использовать минус-слова, например, "пылесос -thomas -беспроводной"</small>
+				</label>
+				<input class="search" type="text" autofocus/>
+			</div>
+			<div class="large-12 cell">
+				<button class="button search-button" type="button">Найти запросы</button>
+			</div>
+		</form>
+		<hr>
+		<div class="queries-list">
+			<button class="button small secondary copy-btn" data-clipboard-target=".queries-area">Скопировать запросы</button>
+			<textarea class="queries-area" rows="10" placeholder="Здесь будут найденные запросы"></textarea>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/vendor/what-input.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/vendor/foundation.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/vendor/clipboard.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/vendor/autosize.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
