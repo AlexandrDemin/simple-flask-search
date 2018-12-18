@@ -1,5 +1,6 @@
 from flask import Flask, url_for, render_template, request
 import json
+import datetime
 
 app = Flask(__name__)
 
@@ -22,7 +23,18 @@ def index():
 			ms = q[1:]
 			for m in ms:
 				minus_words.append(m.strip())
-		return getKeys(query = q[0].strip(), minus_words=minus_words)
+		query = q[0].strip()
+		keys = getKeys(query = query, minus_words=minus_words)
+		with open("log.txt", "a") as logFile:
+			logEntry = {
+				"timestamp": datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'),
+				"requestQuery": query,
+				"requestQuery": minus_words,
+				"keysCount": len(keys),
+				"keys": keys
+			}
+			logFile.write(json.dumps(logEntry)+'\n')
+		return keys
 	return render_template('index.html')
 
 @app.errorhandler(404)
